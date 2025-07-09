@@ -22,13 +22,13 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4.2.1
         with:
           role-to-assume: ${{ secrets.TF_ROLE }}
-          aws-region: us-east-2
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: HashiCorp - Setup Terraform
 
         uses: hashicorp/setup-terraform@v3.1.2
         with:
-          terraform_version: 1.12.2
+          terraform_version: ${{ vars.TF_VERSION }}
 
       - name: Run terraform init
         run: terraform init
