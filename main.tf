@@ -11,3 +11,23 @@ provider "aws" {
   profile = "lucamandelli"
   region  = "us-east-2"
 }
+
+resource "aws_s3_bucket" "terraform-state" {
+  bucket        = "luca-iac"
+  force_destroy = true
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
+  tags = {
+    IAC = "true"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "terraform-state" {
+  bucket = "luca-iac"
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
