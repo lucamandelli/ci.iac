@@ -165,6 +165,12 @@ resource "aws_iam_role_policy" "tf-permission" {
         "Effect" : "Allow",
         "Action" : "iam:*",
         "Resource" : "*"
+      },
+      {
+        "Sid" : "Statement3",
+        "Effect" : "Allow",
+        "Action" : "s3:*",
+        "Resource" : "*"
       }
     ]
   })
